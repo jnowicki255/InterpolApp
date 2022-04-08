@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InterpolApp.Views.RedNoticesPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Red Notices"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="{Binding Query.Total}" />
+
+            <CollectionView ItemsSource="{Binding Query.Embedded.Notices}"
+                            SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5" Padding="25,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source="{Binding Links.Thumbnail.Href}" Grid.Column="0" 
+                                   Grid.RowSpan="4"/>
+
+                            <Label Text="{Binding Id}" Grid.Column="1" Grid.Row="0"/>
+                            <Label Text="{Binding Forename}" Grid.Column="1" Grid.Row="1"/>
+                            <Label Text="{Binding LastName}" Grid.Column="1" Grid.Row="2"/>
+                            <Label Text="{Binding BirthDate}" Grid.Column="1" Grid.Row="3"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
